@@ -39,4 +39,12 @@ public class UserController {
         redirectAttributes.addFlashAttribute("success",userRequestDto.username()+ " has created successfully");
         return "redirect:/api/v1/users";
     }
+    @GetMapping("/edit-user/{username}")
+    public String editUser(@PathVariable String username, Model model){
+        UserRequestDto userResponseDto = new UserRequestDto(null, null, username, null);
+        //add userRequestDTO as an attribute to Model object
+        model.addAttribute("userRequestDto", userResponseDto);
+        return "editUser";
+    }
+
 }
