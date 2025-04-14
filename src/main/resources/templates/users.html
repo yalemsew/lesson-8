@@ -19,7 +19,7 @@
             <td th:text="${index.count}"/>
             <td th:text="${userResponseDto.username}"/>
             <td><a th:href="@{/api/v1/users/edit-user/{username}(username=${userResponseDto.username})}">
-                <img th:src="@{images/edit.png}">
+                <img th:src="@{/images/edit.png}" alt="">
             </a></td>
 
             <td>delete</td>

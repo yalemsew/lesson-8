@@ -1,4 +1,27 @@
-table, td, th {
-    border: 1px solid black;
+table {
     border-collapse: collapse;
+    width: 100%;
+    margin: 20px 0;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    text-align: left;
+}
+
+table th, table td {
+    border: 1px solid #ddd; /* Adding a border to table cells */
+    padding: 8px; /* Adding padding inside cells */
+}
+
+table th {
+    background-color: #f4f4f4; /* Light gray background for header */
+    font-weight: bold; /* Making header text bold */
+    text-transform: uppercase; /* Optional: Transform header text to uppercase */
+}
+
+table tr:nth-child(even) {
+    background-color: #f9f9f9; /* Light gray background for alternate rows */
+}
+
+table tr:hover {
+    background-color: #f1f1f1; /* Slightly darker gray background on hover */
 }
