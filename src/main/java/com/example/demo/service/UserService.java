@@ -4,7 +4,6 @@ import com.example.demo.dto.request.UserRequestDto;
 import com.example.demo.dto.response.UserResponseDto;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface UserService {
     UserResponseDto createUser(UserRequestDto userRequestDto);
