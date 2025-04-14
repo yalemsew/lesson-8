@@ -3,6 +3,7 @@ package com.example.demo.service.impl;
 
 import com.example.demo.dto.request.UserRequestDto;
 import com.example.demo.dto.response.UserResponseDto;
+import com.example.demo.exception.DuplicateUserException;
 import com.example.demo.exception.UserNotFoundException;
 import com.example.demo.model.User;
 import com.example.demo.repository.UserRepository;
@@ -25,7 +26,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserResponseDto createUser(UserRequestDto userRequestDto) {
         if (userRepository.findByUsername(userRequestDto.username()).isPresent()) {
-            return null;
+            throw new DuplicateUserException(userRequestDto.username() + " already exists");
         }
         User user = new User(userRequestDto.firstName(), userRequestDto.lastName(), userRequestDto.username(), userRequestDto.password());
         User savedUser = userRepository.save(user);
@@ -54,6 +55,7 @@ public class UserServiceImpl implements UserService {
             userRepository.delete(user);
         } else {
             log.atWarn().log("User not found: {} for deletion.", username);
+            throw new UserNotFoundException(username+ " not found");
         }
     }
 

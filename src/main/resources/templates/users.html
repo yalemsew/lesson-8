@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Users</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body>
+<p th:if="${success}" th:text="${success}" style="color: green"></p>
+<a th:href="@{/api/v1/users/sign-up}">Add new user</a>
+    <table>
+        <tr>
+            <th>#</th>
+            <th>UserName</th>
+            <th>Edit</th>
+            <th>delete</th>
+        </tr>
+        <tr th:each="userResponseDto, index : ${userResponseDtos}">
+            <td th:text="${index.count}"/>
+            <td th:text="${userResponseDto.username}"/>
+            <td><a th:href="@{/api/v1/users/edit-user}">
+                <img th:src="@{images/edit.png}">
+            </a></td>
+
+            <td>delete</td>
+        </tr>
+    </table>
+
+</body>
+</html>
