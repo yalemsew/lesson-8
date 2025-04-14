@@ -46,5 +46,11 @@ public class UserController {
         model.addAttribute("userRequestDto", userResponseDto);
         return "editUser";
     }
+    @PutMapping("/{username}")
+    public String updateUser(@PathVariable String username, @Valid @ModelAttribute UserRequestDto userRequestDto, RedirectAttributes redirectAttributes){
+        userService.updateUser(username, userRequestDto);
+        redirectAttributes.addFlashAttribute("success",userRequestDto.username()+ " has updated successfully");
+        return "redirect:/api/v1/users";
+    }
 
 }
